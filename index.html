@@ -7,6 +7,13 @@
     <title>Mi universidad</title>
 </head>
 <body>
+    <!--
+    - ¿Qué elementos del App Shell se mantienen siempre?
+        Los elementos que siempre se mantien en el App Shell es la estructura de la aplicación que son el header, footer,
+        menú de navegación, placeholders y el espacio para el contenido dinamico.
+    - ¿Qué elementos cambian dinámicamente?
+        Cambia el contenido que se obtiene a través de la llamada a APIs.
+    -->
     <header>
         <h1>Mi universidad</h1>
     </header>
@@ -57,5 +64,18 @@
                 contenidoSection.innerHTML = '<p>Lo sentimos, no se pudo cargar la información de las materias.</p>';
             });
     </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registrado con éxito:', registration.scope);
+        })
+        .catch(error => {
+          console.error('Error al registrar el Service Worker:', error);
+        });
+    });
+  }
+</script>
 </body>
 </html>
