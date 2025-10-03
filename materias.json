@@ -1,0 +1,8 @@
+{
+    "materias" : [
+        {"nombre" : "Bases de datos",
+            "salon" : "A-1"},
+        {"nombre" : "Arquitectura de software",
+            "salon" : "A-2"}
+    ]
+}

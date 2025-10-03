@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mi universidad</title>
+</head>
+<body>
+    <header>
+        <h1>Mi universidad</h1>
+    </header>
+    <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Materias</li>
+                <li>Horario</li>
+                <li>Perfil</li>
+            </ul>
+        </nav>
+    <main>
+        <section class="contenido">
+            </section>
+    </main>
+    <footer>
+        <h3>Universidad XYZ – 2025</h3>
+    </footer>
+
+    <script>
+        const contenidoSection = document.querySelector('.contenido');
+
+        fetch('materias.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo cargar el archivo JSON. Estatus: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const titulo = document.createElement('h2');
+                titulo.textContent = 'Lista de Materias';
+                contenidoSection.appendChild(titulo);
+
+                data.materias.forEach(materia => {
+                    const materiaDisplay = document.createElement('div');
+
+                    materiaDisplay.innerHTML = `
+                        <h4>${materia.nombre}</h4>
+                        <p>Salón: ${materia.salon}</p>
+                    `;
+
+                    contenidoSection.appendChild(materiaDisplay);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar o procesar los datos:', error);
+                contenidoSection.innerHTML = '<p>Lo sentimos, no se pudo cargar la información de las materias.</p>';
+            });
+    </script>
+</body>
+</html>

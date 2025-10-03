@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    height: 100vh; 
+
+    grid-template-rows: auto 1fr auto; 
+    grid-template-columns: 200px 1fr 1fr; 
+    
+    grid-template-areas: 
+        "header header header"
+        "nav    main main"
+        "footer footer footer";
+}
+
+header {
+    grid-area: header;
+    background-color: #417ee6;
+}
+
+nav {
+    grid-area: nav;
+    background-color: #adcbe1;
+}
+
+main {
+    grid-area: main; 
+}
+
+footer {
+    grid-area: footer;
+    background-color: #417ee6;
+}
+
+body * {
+    padding: 20px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+}
